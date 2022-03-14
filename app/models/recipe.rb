@@ -5,6 +5,8 @@ class Recipe < ApplicationRecord
 
   # Validations
 
+  validates :category_id, :presence => true
+
   validates :dietary_restrictions, :presence => true
 
   validates :ingredients, :presence => true
