@@ -5,6 +5,8 @@ class Share < ApplicationRecord
 
   # Validations
 
+  validates :recipient_id, :presence => true
+
   # Scopes
 
   def to_s

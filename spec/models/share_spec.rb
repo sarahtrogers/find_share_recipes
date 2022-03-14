@@ -12,5 +12,7 @@ RSpec.describe Share, type: :model do
 
     describe "Validations" do
 
+    it { should validate_presence_of(:recipient_id) }
+
     end
 end
