@@ -10,6 +10,8 @@ class UserResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :ratings
+
   has_many   :comments
 
   has_many   :recipes
