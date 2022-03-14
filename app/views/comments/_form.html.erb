@@ -1,0 +1,83 @@
+<% was_validated = comment.errors.any? %>
+
+<%= form_with(model: comment, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for comment start -->
+  <div class="form-group">
+    <% comment_class = "form-control" %>
+    <% comment_was_invalid = comment.errors.include?(:comment) %>
+
+    <% if was_validated %>
+      <% if comment_was_invalid %>
+        <% comment_class << " is-invalid" %>
+      <% else %>
+        <% comment_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :comment %>
+    <!-- Input for comment start -->
+    <%= f.text_area :comment, class: comment_class, placeholder: "Enter comment" %>
+    <!-- Input for comment end -->
+    <% if comment_was_invalid %>
+      <% comment.errors.full_messages_for(:comment).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for comment end -->
+  <!-- Label and input for recipe_id start -->
+  <div class="form-group">
+    <% recipe_class = "form-control" %>
+    <% recipe_was_invalid = comment.errors.include?(:recipe) %>
+
+    <% if was_validated %>
+      <% if recipe_was_invalid %>
+        <% recipe_class << " is-invalid" %>
+      <% else %>
+        <% recipe_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :recipe_id %>
+    <!-- Input for recipe_id start -->
+    <%= f.number_field :recipe_id, class: recipe_class, placeholder: "Enter recipe" %>
+    <!-- Input for recipe_id end -->
+    <% if recipe_was_invalid %>
+      <% comment.errors.full_messages_for(:recipe).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for recipe_id end -->
+  <!-- Label and input for user_id start -->
+  <div class="form-group">
+    <% user_class = "form-control" %>
+    <% user_was_invalid = comment.errors.include?(:user) %>
+
+    <% if was_validated %>
+      <% if user_was_invalid %>
+        <% user_class << " is-invalid" %>
+      <% else %>
+        <% user_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :user_id %>
+    <!-- Input for user_id start -->
+    <%= f.number_field :user_id, class: user_class, placeholder: "Enter user" %>
+    <!-- Input for user_id end -->
+    <% if user_was_invalid %>
+      <% comment.errors.full_messages_for(:user).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for user_id end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
