@@ -10,5 +10,4 @@ class RecipeCategoryResource < ApplicationResource
              foreign_key: :category_id
 
   # Indirect associations
-
 end

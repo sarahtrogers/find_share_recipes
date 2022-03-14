@@ -17,5 +17,4 @@ class UserResource < ApplicationResource
   has_many   :recipes
 
   # Indirect associations
-
 end

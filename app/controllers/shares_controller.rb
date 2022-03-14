@@ -1,15 +1,14 @@
 class SharesController < ApplicationController
-  before_action :set_share, only: [:show, :edit, :update, :destroy]
+  before_action :set_share, only: %i[show edit update destroy]
 
   # GET /shares
   def index
     @q = Share.ransack(params[:q])
-    @shares = @q.result(:distinct => true).includes(:recipe).page(params[:page]).per(10)
+    @shares = @q.result(distinct: true).includes(:recipe).page(params[:page]).per(10)
   end
 
   # GET /shares/1
-  def show
-  end
+  def show; end
 
   # GET /shares/new
   def new
@@ -17,17 +16,16 @@ class SharesController < ApplicationController
   end
 
   # GET /shares/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /shares
   def create
     @share = Share.new(share_params)
 
     if @share.save
-      message = 'Share was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "Share was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @share, notice: message
       end
@@ -39,7 +37,7 @@ class SharesController < ApplicationController
   # PATCH/PUT /shares/1
   def update
     if @share.update(share_params)
-      redirect_to @share, notice: 'Share was successfully updated.'
+      redirect_to @share, notice: "Share was successfully updated."
     else
       render :edit
     end
@@ -49,22 +47,22 @@ class SharesController < ApplicationController
   def destroy
     @share.destroy
     message = "Share was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to shares_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_share
-      @share = Share.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def share_params
-      params.require(:share).permit(:recipe_id, :recipient_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_share
+    @share = Share.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def share_params
+    params.require(:share).permit(:recipe_id, :recipient_id)
+  end
 end

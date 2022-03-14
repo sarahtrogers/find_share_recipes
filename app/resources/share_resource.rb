@@ -10,5 +10,4 @@ class ShareResource < ApplicationResource
   belongs_to :recipe
 
   # Indirect associations
-
 end

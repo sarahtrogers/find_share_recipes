@@ -1,1 +1,2 @@
-json.array! @recipe_categories, partial: "recipe_categories/recipe_category", as: :recipe_category
+json.array! @recipe_categories, partial: "recipe_categories/recipe_category",
+                                as: :recipe_category

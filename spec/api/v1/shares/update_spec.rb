@@ -1,32 +1,32 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "shares#update", type: :request do
   subject(:make_request) do
     jsonapi_put "/api/v1/shares/#{share.id}", payload
   end
 
-  describe 'basic update' do
+  describe "basic update" do
     let!(:share) { create(:share) }
 
     let(:payload) do
       {
         data: {
           id: share.id.to_s,
-          type: 'shares',
+          type: "shares",
           attributes: {
             # ... your attrs here
-          }
-        }
+          },
+        },
       }
     end
 
     # Replace 'xit' with 'it' after adding attributes
-    xit 'updates the resource' do
+    xit "updates the resource" do
       expect(ShareResource).to receive(:find).and_call_original
-      expect {
+      expect do
         make_request
         expect(response.status).to eq(200), response.body
-      }.to change { share.reload.attributes }
+      end.to change { share.reload.attributes }
     end
   end
 end

@@ -13,7 +13,7 @@ class Api::V1::RecipeCategoriesController < Api::V1::GraphitiController
     recipe_category = RecipeCategoryResource.build(params)
 
     if recipe_category.save
-      render jsonapi: recipe_category, status: 201
+      render jsonapi: recipe_category, status: :created
     else
       render jsonapi_errors: recipe_category
     end
@@ -33,7 +33,7 @@ class Api::V1::RecipeCategoriesController < Api::V1::GraphitiController
     recipe_category = RecipeCategoryResource.find(params)
 
     if recipe_category.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: recipe_category
     end

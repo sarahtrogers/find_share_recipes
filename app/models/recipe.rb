@@ -4,16 +4,16 @@ class Recipe < ApplicationRecord
   # Direct associations
 
   belongs_to :category,
-             :class_name => "RecipeCategory"
+             class_name: "RecipeCategory"
 
   has_many   :shares,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :ratings,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :comments,
-             :dependent => :destroy
+             dependent: :destroy
 
   belongs_to :user
 
@@ -21,24 +21,23 @@ class Recipe < ApplicationRecord
 
   # Validations
 
-  validates :category_id, :presence => true
+  validates :category_id, presence: true
 
-  validates :dietary_restrictions, :presence => true
+  validates :dietary_restrictions, presence: true
 
-  validates :ingredients, :presence => true
+  validates :ingredients, presence: true
 
-  validates :name, :uniqueness => { :scope => [:user_id] }
+  validates :name, uniqueness: { scope: [:user_id] }
 
-  validates :name, :presence => true
+  validates :name, presence: true
 
-  validates :photo, :presence => true
+  validates :photo, presence: true
 
-  validates :user_id, :presence => true
+  validates :user_id, presence: true
 
   # Scopes
 
   def to_s
     created_at
   end
-
 end

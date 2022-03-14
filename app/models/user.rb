@@ -1,28 +1,27 @@
 class User < ApplicationRecord
-  
   include JwtToken
-# Direct associations
+  # Direct associations
 
   has_many   :ratings,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :comments,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :recipes,
-             :dependent => :destroy
+             dependent: :destroy
 
   # Indirect associations
 
   # Validations
 
-  validates :first_name, :presence => true
+  validates :first_name, presence: true
 
-  validates :last_name, :presence => true
+  validates :last_name, presence: true
 
-  validates :username, :uniqueness => true
+  validates :username, uniqueness: true
 
-  validates :username, :presence => true
+  validates :username, presence: true
 
   # Scopes
 
