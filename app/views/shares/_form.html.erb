@@ -1,0 +1,57 @@
+<% was_validated = share.errors.any? %>
+
+<%= form_with(model: share, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for recipe_id start -->
+  <div class="form-group">
+    <% recipe_class = "form-control" %>
+    <% recipe_was_invalid = share.errors.include?(:recipe) %>
+
+    <% if was_validated %>
+      <% if recipe_was_invalid %>
+        <% recipe_class << " is-invalid" %>
+      <% else %>
+        <% recipe_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :recipe_id %>
+    <!-- Input for recipe_id start -->
+    <%= f.number_field :recipe_id, class: recipe_class, placeholder: "Enter recipe" %>
+    <!-- Input for recipe_id end -->
+    <% if recipe_was_invalid %>
+      <% share.errors.full_messages_for(:recipe).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for recipe_id end -->
+  <!-- Label and input for recipient_id start -->
+  <div class="form-group">
+    <% recipient_class = "form-control" %>
+    <% recipient_was_invalid = share.errors.include?(:recipient) %>
+
+    <% if was_validated %>
+      <% if recipient_was_invalid %>
+        <% recipient_class << " is-invalid" %>
+      <% else %>
+        <% recipient_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :recipient_id %>
+    <!-- Input for recipient_id start -->
+    <%= f.number_field :recipient_id, class: recipient_class, placeholder: "Enter recipient" %>
+    <!-- Input for recipient_id end -->
+    <% if recipient_was_invalid %>
+      <% share.errors.full_messages_for(:recipient).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for recipient_id end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>

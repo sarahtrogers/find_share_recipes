@@ -1,0 +1,46 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Share #<%= share.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Recipe</dt>
+      <!-- Display recipe_id start -->
+      <dd><%= share.recipe_id %></dd>
+      <!-- Display recipe_id end -->
+
+      <dt>Recipient</dt>
+      <!-- Display recipient_id start -->
+      <dd><%= share.recipient_id %></dd>
+      <!-- Display recipient_id end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back share, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link share start -->
+      <div class="col">
+        <%= link_to edit_share_url(share), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link share end -->
+
+      <!-- Delete link share start -->
+      <div class="col">
+        <%= link_to share, method: :delete, data: { confirm: "Do you really want to delete this share?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link share end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(share.updated_at) %> ago
+  </div>
+</div>
