@@ -1,7 +1,6 @@
 <% was_validated = share.errors.any? %>
 
 <%= form_with(model: share, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for recipe_id start -->
   <div class="form-group">
     <% recipe_class = "form-control" %>
     <% recipe_was_invalid = share.errors.include?(:recipe) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :recipe_id %>
-    <!-- Input for recipe_id start -->
     <%= f.collection_select :recipe_id, Recipe.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for recipe_id end -->
     <% if recipe_was_invalid %>
       <% share.errors.full_messages_for(:recipe).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for recipe_id end -->
-  <!-- Label and input for recipient_id start -->
   <div class="form-group">
     <% recipient_class = "form-control" %>
     <% recipient_was_invalid = share.errors.include?(:recipient) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :recipient_id %>
-    <!-- Input for recipient_id start -->
     <%= f.number_field :recipient_id, class: recipient_class, placeholder: "Enter recipient" %>
-    <!-- Input for recipient_id end -->
     <% if recipient_was_invalid %>
       <% share.errors.full_messages_for(:recipient).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,6 +45,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for recipient_id end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

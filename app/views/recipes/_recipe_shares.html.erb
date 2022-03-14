@@ -10,24 +10,18 @@
   <ul class="list-group list-group-flush">
     <% @recipe.shares.each do |share| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <%= link_to share, share %>
-        <!-- Show link end -->
 
-        <!-- Delete link start -->
         <%= link_to share, method: :delete, data: { confirm: "Do you really want to delete this share" } do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
-        <!-- Delete link end -->
 
       </li>
     <% end %>
 
     <div class="card-footer">
       <div class="collapse" id="recipe_shares_new_form">
-        <!-- New associationcollection form start -->
         <%= render partial: "recipes/recipe_shares_new_form" %>
-        <!-- New associationcollection form end -->
       </div>
     </div>
 

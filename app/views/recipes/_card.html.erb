@@ -6,44 +6,32 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Photo</dt>
-      <!-- Display photo start -->
       <dd>
         <%= cl_image_tag @recipe.photo, class: "img-fluid" %>
       </dd>
-      <!-- Display photo end -->
 
       <dt>Name</dt>
-      <!-- Display name start -->
       <dd><%= recipe.name %></dd>
-      <!-- Display name end -->
 
       <dt>Ingredients</dt>
-      <!-- Display ingredients start -->
       <dd><%= recipe.ingredients %></dd>
-      <!-- Display ingredients end -->
 
       <dt>Category</dt>
-      <!-- Display category_id start -->
       <dd>
         <% if @recipe.category.present? %>
           <%= link_to recipe.category, recipe.category %>
         <% end %>
       </dd>
-      <!-- Display category_id end -->
 
       <dt>Dietary restrictions</dt>
-      <!-- Display dietary_restrictions start -->
       <dd><%= recipe.dietary_restrictions %></dd>
-      <!-- Display dietary_restrictions end -->
 
       <dt>User</dt>
-      <!-- Display user_id start -->
       <dd>
         <% if @recipe.user.present? %>
           <%= link_to recipe.user, recipe.user %>
         <% end %>
       </dd>
-      <!-- Display user_id end -->
 
     </dl>
 
@@ -52,7 +40,6 @@
         <%= link_to_show_or_back recipe, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link recipe start -->
       <div class="col">
         <% if current_user == @recipe.user %>
           <%= link_to edit_recipe_url(recipe), class: "btn btn-block btn-sm btn-outline-secondary" do %>
@@ -60,9 +47,7 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Edit link recipe end -->
 
-      <!-- Delete link recipe start -->
       <div class="col">
         <% if current_user == @recipe.user %>
           <%= link_to recipe, method: :delete, data: { confirm: "Do you really want to delete this recipe?" }, class: "btn btn-block btn-outline-secondary" do %>
@@ -70,7 +55,6 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Delete link recipe end -->
     </div>
   </div>
 

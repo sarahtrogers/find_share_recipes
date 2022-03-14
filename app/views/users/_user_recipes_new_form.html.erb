@@ -1,59 +1,33 @@
-<!-- Form recipe start -->
 <%= form_with(model: @recipe, local: true) do |f| %>
-<!-- Form recipe end -->
 
-  <!-- Label and input for photo start -->
   <div class="form-group">
     <%= f.label :photo %>
 
-    <!-- Input for photo start -->
     <%= f.file_field :photo, class: "form-control" %>
-    <!-- Input for photo end -->
   </div>
-  <!-- Label and input for photo end -->
 
-  <!-- Label and input for name start -->
   <div class="form-group">
     <%= f.label :name %>
-    <!-- Input for name start -->
     <%= f.text_area :name, rows: "3", class: "form-control" %>
-    <!-- Input for name end -->
   </div>
-  <!-- Label and input for name end -->
 
-  <!-- Label and input for ingredients start -->
   <div class="form-group">
     <%= f.label :ingredients %>
-    <!-- Input for ingredients start -->
     <%= f.text_area :ingredients, rows: "3", class: "form-control" %>
-    <!-- Input for ingredients end -->
   </div>
-  <!-- Label and input for ingredients end -->
 
-  <!-- Label and input for category_id start -->
   <div class="form-group">
     <%= f.label :category_id %>
 
-    <!-- Input for category_id start -->
     <%= f.collection_select :category_id, RecipeCategory.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for category_id end -->
   </div>
-  <!-- Label and input for category_id end -->
 
-  <!-- Label and input for dietary_restrictions start -->
   <div class="form-group">
     <%= f.label :dietary_restrictions %>
-    <!-- Input for dietary_restrictions start -->
     <%= f.text_area :dietary_restrictions, rows: "3", class: "form-control" %>
-    <!-- Input for dietary_restrictions end -->
   </div>
-  <!-- Label and input for dietary_restrictions end -->
 
-  <!-- Label and input for user_id start -->
-  <!-- Input for user_id start -->
   <%= f.hidden_field :user_id, value: @user.id %>
-  <!-- Input for user_id end -->
-  <!-- Label and input for user_id end -->
 
   <%= f.submit "Create recipe", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

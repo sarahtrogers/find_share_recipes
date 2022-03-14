@@ -6,9 +6,7 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Category name</dt>
-      <!-- Display category_name start -->
       <dd><%= recipe_category.category_name %></dd>
-      <!-- Display category_name end -->
 
     </dl>
 
@@ -17,21 +15,17 @@
         <%= link_to_show_or_back recipe_category, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link recipe_category start -->
       <div class="col">
         <%= link_to edit_recipe_category_url(recipe_category), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link recipe_category end -->
 
-      <!-- Delete link recipe_category start -->
       <div class="col">
         <%= link_to recipe_category, method: :delete, data: { confirm: "Do you really want to delete this recipe_category?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link recipe_category end -->
     </div>
   </div>
 

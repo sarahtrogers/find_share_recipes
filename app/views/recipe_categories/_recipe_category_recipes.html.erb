@@ -10,26 +10,20 @@
   <ul class="list-group list-group-flush">
     <% @recipe_category.recipes.each do |recipe| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <%= link_to recipe, recipe %>
-        <!-- Show link end -->
 
-        <!-- Delete link start -->
         <% if current_user == recipe.user %>
           <%= link_to recipe, method: :delete do %>
             <i class="fas fa-trash-alt"></i>
           <% end %>
         <% end %>
-        <!-- Delete link end -->
 
       </li>
     <% end %>
 
     <div class="card-footer">
       <div class="collapse" id="recipe_category_recipes_new_form">
-        <!-- New associationcollection form start -->
         <%= render partial: "recipe_categories/recipe_category_recipes_new_form" %>
-        <!-- New associationcollection form end -->
       </div>
     </div>
 

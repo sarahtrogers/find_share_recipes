@@ -6,27 +6,21 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Rating</dt>
-      <!-- Display rating start -->
       <dd><%= rating.rating %></dd>
-      <!-- Display rating end -->
 
       <dt>Recipe</dt>
-      <!-- Display recipe_id start -->
       <dd>
         <% if @rating.recipe.present? %>
           <%= link_to rating.recipe, rating.recipe %>
         <% end %>
       </dd>
-      <!-- Display recipe_id end -->
 
       <dt>User</dt>
-      <!-- Display user_id start -->
       <dd>
         <% if @rating.user.present? %>
           <%= link_to rating.user, rating.user %>
         <% end %>
       </dd>
-      <!-- Display user_id end -->
 
     </dl>
 
@@ -35,21 +29,17 @@
         <%= link_to_show_or_back rating, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link rating start -->
       <div class="col">
         <%= link_to edit_rating_url(rating), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link rating end -->
 
-      <!-- Delete link rating start -->
       <div class="col">
         <%= link_to rating, method: :delete, data: { confirm: "Do you really want to delete this rating?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link rating end -->
     </div>
   </div>
 
