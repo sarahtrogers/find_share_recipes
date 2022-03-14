@@ -5,6 +5,8 @@ class Recipe < ApplicationRecord
 
   # Validations
 
+  validates :dietary_restrictions, :presence => true
+
   validates :ingredients, :presence => true
 
   validates :name, :uniqueness => { :scope => [:user_id] }

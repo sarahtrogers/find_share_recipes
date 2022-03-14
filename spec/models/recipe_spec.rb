@@ -12,6 +12,8 @@ RSpec.describe Recipe, type: :model do
 
     describe "Validations" do
 
+    it { should validate_presence_of(:dietary_restrictions) }
+
     it { should validate_presence_of(:ingredients) }
 
     it { should validate_uniqueness_of(:name).scoped_to(:user_id) }
