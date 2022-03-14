@@ -5,6 +5,8 @@ class Recipe < ApplicationRecord
 
   # Validations
 
+  validates :photo, :presence => true
+
   validates :user_id, :presence => true
 
   # Scopes
