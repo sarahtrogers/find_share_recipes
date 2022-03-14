@@ -1,6 +1,10 @@
 class RecipeCategory < ApplicationRecord
   # Direct associations
 
+  has_many   :recipes,
+             :foreign_key => "category_id",
+             :dependent => :destroy
+
   # Indirect associations
 
   # Validations

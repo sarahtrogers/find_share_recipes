@@ -1,6 +1,9 @@
 class Recipe < ApplicationRecord
   # Direct associations
 
+  belongs_to :category,
+             :class_name => "RecipeCategory"
+
   has_many   :shares,
              :dependent => :destroy
 
