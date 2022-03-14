@@ -7,6 +7,8 @@ class ShareResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :recipe
+
   # Indirect associations
 
 end

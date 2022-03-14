@@ -11,6 +11,8 @@ class RecipeResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :shares
+
   has_many   :ratings
 
   has_many   :comments
