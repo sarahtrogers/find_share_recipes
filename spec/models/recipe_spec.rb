@@ -4,6 +4,8 @@ RSpec.describe Recipe, type: :model do
   
     describe "Direct Associations" do
 
+    it { should have_many(:shares) }
+
     it { should have_many(:ratings) }
 
     it { should have_many(:comments) }
