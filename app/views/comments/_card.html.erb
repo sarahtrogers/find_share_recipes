@@ -12,12 +12,20 @@
 
       <dt>Recipe</dt>
       <!-- Display recipe_id start -->
-      <dd><%= comment.recipe_id %></dd>
+      <dd>
+        <% if @comment.recipe.present? %>
+          <%= link_to comment.recipe, comment.recipe %>
+        <% end %>
+      </dd>
       <!-- Display recipe_id end -->
 
       <dt>User</dt>
       <!-- Display user_id start -->
-      <dd><%= comment.user_id %></dd>
+      <dd>
+        <% if @comment.user.present? %>
+          <%= link_to comment.user, comment.user %>
+        <% end %>
+      </dd>
       <!-- Display user_id end -->
 
     </dl>

@@ -24,7 +24,11 @@
 
       <dt>Category</dt>
       <!-- Display category_id start -->
-      <dd><%= recipe.category_id %></dd>
+      <dd>
+        <% if @recipe.category.present? %>
+          <%= link_to recipe.category, recipe.category %>
+        <% end %>
+      </dd>
       <!-- Display category_id end -->
 
       <dt>Dietary restrictions</dt>
@@ -34,7 +38,11 @@
 
       <dt>User</dt>
       <!-- Display user_id start -->
-      <dd><%= recipe.user_id %></dd>
+      <dd>
+        <% if @recipe.user.present? %>
+          <%= link_to recipe.user, recipe.user %>
+        <% end %>
+      </dd>
       <!-- Display user_id end -->
 
     </dl>
