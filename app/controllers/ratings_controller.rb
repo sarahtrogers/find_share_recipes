@@ -24,7 +24,12 @@ class RatingsController < ApplicationController
     @rating = Rating.new(rating_params)
 
     if @rating.save
-      redirect_to @rating, notice: 'Rating was successfully created.'
+      message = 'Rating was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @rating, notice: message
+      end
     else
       render :new
     end

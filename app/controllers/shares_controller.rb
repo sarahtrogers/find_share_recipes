@@ -24,7 +24,12 @@ class SharesController < ApplicationController
     @share = Share.new(share_params)
 
     if @share.save
-      redirect_to @share, notice: 'Share was successfully created.'
+      message = 'Share was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @share, notice: message
+      end
     else
       render :new
     end

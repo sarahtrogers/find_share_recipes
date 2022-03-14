@@ -8,6 +8,9 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
+    @rating = Rating.new
+    @comment = Comment.new
+    @recipe = Recipe.new
   end
 
   # GET /users/new

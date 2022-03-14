@@ -1,0 +1,22 @@
+<!-- Form share start -->
+<%= form_with(model: @share, local: true) do |f| %>
+<!-- Form share end -->
+
+  <!-- Label and input for recipe_id start -->
+  <!-- Input for recipe_id start -->
+  <%= f.hidden_field :recipe_id, value: @recipe.id %>
+  <!-- Input for recipe_id end -->
+  <!-- Label and input for recipe_id end -->
+
+  <!-- Label and input for recipient_id start -->
+  <div class="form-group">
+    <%= f.label :recipient_id %>
+
+    <!-- Input for recipient_id start -->
+    <%= f.text_field :recipient_id, class: "form-control" %>
+    <!-- Input for recipient_id end -->
+  </div>
+  <!-- Label and input for recipient_id end -->
+
+  <%= f.submit "Create share", class: "btn btn-block btn-outline-secondary" %>
+<% end %>
