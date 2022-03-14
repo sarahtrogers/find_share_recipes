@@ -5,6 +5,8 @@ class Share < ApplicationRecord
 
   # Validations
 
+  validates :recipe_id, :presence => true
+
   validates :recipient_id, :presence => true
 
   # Scopes
