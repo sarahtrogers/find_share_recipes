@@ -1,5 +1,7 @@
 ActiveAdmin.register Share do
 
+ permit_params :recipe_id, :recipient_id
+
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
