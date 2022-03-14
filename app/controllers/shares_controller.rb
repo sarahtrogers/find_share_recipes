@@ -3,7 +3,8 @@ class SharesController < ApplicationController
 
   # GET /shares
   def index
-    @shares = Share.page(params[:page]).per(10)
+    @q = Share.ransack(params[:q])
+    @shares = @q.result(:distinct => true).includes(:recipe).page(params[:page]).per(10)
   end
 
   # GET /shares/1
