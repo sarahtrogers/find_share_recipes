@@ -7,7 +7,9 @@
     <dl class="mb-1">
       <dt>Photo</dt>
       <!-- Display photo start -->
-      <dd><%= recipe.photo %></dd>
+      <dd>
+        <%= cl_image_tag @recipe.photo, class: "img-fluid" %>
+      </dd>
       <!-- Display photo end -->
 
       <dt>Name</dt>
