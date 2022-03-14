@@ -3,7 +3,7 @@ class SharesController < ApplicationController
 
   # GET /shares
   def index
-    @shares = Share.all
+    @shares = Share.page(params[:page]).per(10)
   end
 
   # GET /shares/1

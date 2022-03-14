@@ -34,6 +34,10 @@
       <div class="list-group list-group-flush">
         <%= render collection: @shares, partial: "list_item", as: :share %>
       </div>
+      <div class="card-footer d-flex justify-content-center">
+        <%= paginate @shares, theme: 'twitter-bootstrap-4' %>
+      </div>
+
     </div>
   </div>
 </div>
