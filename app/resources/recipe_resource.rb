@@ -11,6 +11,8 @@ class RecipeResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :comments
+
   belongs_to :user
 
   # Indirect associations
