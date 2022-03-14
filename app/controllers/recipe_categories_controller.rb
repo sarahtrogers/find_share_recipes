@@ -1,26 +1,21 @@
 class RecipeCategoriesController < ApplicationController
   before_action :set_recipe_category, only: %i[show edit update destroy]
 
-  # GET /recipe_categories
   def index
     @q = RecipeCategory.ransack(params[:q])
     @recipe_categories = @q.result(distinct: true).includes(:recipes).page(params[:page]).per(10)
   end
 
-  # GET /recipe_categories/1
   def show
     @recipe = Recipe.new
   end
 
-  # GET /recipe_categories/new
   def new
     @recipe_category = RecipeCategory.new
   end
 
-  # GET /recipe_categories/1/edit
   def edit; end
 
-  # POST /recipe_categories
   def create
     @recipe_category = RecipeCategory.new(recipe_category_params)
 
@@ -32,7 +27,6 @@ class RecipeCategoriesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /recipe_categories/1
   def update
     if @recipe_category.update(recipe_category_params)
       redirect_to @recipe_category,
@@ -42,7 +36,6 @@ class RecipeCategoriesController < ApplicationController
     end
   end
 
-  # DELETE /recipe_categories/1
   def destroy
     @recipe_category.destroy
     redirect_to recipe_categories_url,
@@ -51,12 +44,10 @@ class RecipeCategoriesController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_recipe_category
     @recipe_category = RecipeCategory.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def recipe_category_params
     params.require(:recipe_category).permit(:category_name)
   end

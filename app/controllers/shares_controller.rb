@@ -1,24 +1,19 @@
 class SharesController < ApplicationController
   before_action :set_share, only: %i[show edit update destroy]
 
-  # GET /shares
   def index
     @q = Share.ransack(params[:q])
     @shares = @q.result(distinct: true).includes(:recipe).page(params[:page]).per(10)
   end
 
-  # GET /shares/1
   def show; end
 
-  # GET /shares/new
   def new
     @share = Share.new
   end
 
-  # GET /shares/1/edit
   def edit; end
 
-  # POST /shares
   def create
     @share = Share.new(share_params)
 
@@ -34,7 +29,6 @@ class SharesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /shares/1
   def update
     if @share.update(share_params)
       redirect_to @share, notice: "Share was successfully updated."
@@ -43,7 +37,6 @@ class SharesController < ApplicationController
     end
   end
 
-  # DELETE /shares/1
   def destroy
     @share.destroy
     message = "Share was successfully deleted."
@@ -56,12 +49,10 @@ class SharesController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_share
     @share = Share.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def share_params
     params.require(:share).permit(:recipe_id, :recipient_id)
   end

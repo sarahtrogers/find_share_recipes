@@ -4,29 +4,24 @@ class RecipesController < ApplicationController
 
   before_action :set_recipe, only: %i[show edit update destroy]
 
-  # GET /recipes
   def index
     @q = Recipe.ransack(params[:q])
     @recipes = @q.result(distinct: true).includes(:user, :comments,
                                                   :ratings, :shares, :category).page(params[:page]).per(10)
   end
 
-  # GET /recipes/1
   def show
     @share = Share.new
     @rating = Rating.new
     @comment = Comment.new
   end
 
-  # GET /recipes/new
   def new
     @recipe = Recipe.new
   end
 
-  # GET /recipes/1/edit
   def edit; end
 
-  # POST /recipes
   def create
     @recipe = Recipe.new(recipe_params)
 
@@ -42,7 +37,6 @@ class RecipesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /recipes/1
   def update
     if @recipe.update(recipe_params)
       redirect_to @recipe, notice: "Recipe was successfully updated."
@@ -51,7 +45,6 @@ class RecipesController < ApplicationController
     end
   end
 
-  # DELETE /recipes/1
   def destroy
     @recipe.destroy
     message = "Recipe was successfully deleted."
@@ -72,12 +65,10 @@ class RecipesController < ApplicationController
     end
   end
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_recipe
     @recipe = Recipe.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def recipe_params
     params.require(:recipe).permit(:photo, :name, :ingredients, :category_id,
                                    :dietary_restrictions, :user_id)
