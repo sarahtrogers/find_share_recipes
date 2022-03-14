@@ -11,6 +11,9 @@ class RecipeResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :category,
+             resource: RecipeCategoryResource
+
   has_many   :shares
 
   has_many   :ratings
