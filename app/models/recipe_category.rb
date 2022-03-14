@@ -5,6 +5,8 @@ class RecipeCategory < ApplicationRecord
 
   # Validations
 
+  validates :category_name, :presence => true
+
   # Scopes
 
   def to_s

@@ -12,5 +12,7 @@ RSpec.describe RecipeCategory, type: :model do
 
     describe "Validations" do
 
+    it { should validate_presence_of(:category_name) }
+
     end
 end
