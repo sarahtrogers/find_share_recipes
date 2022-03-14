@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "recipes#index"
   resources :shares
   resources :comments
   resources :recipe_categories
